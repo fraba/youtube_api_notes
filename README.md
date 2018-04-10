@@ -57,7 +57,7 @@ The function to request related videos is the `search()` function with the param
 results = youtube.search().list(part="snippet", relatedToVideoId='jaVSuYdEFks', type="video",maxResults=20).execute()
 ```
 
-Related videos (different from *recommended videos*) do appear in the right column of a YouTube video page along with recommended videos. In the table below I compare the 20 video recommendations returned by the API with the 20 video recommendations offered to me on the YouTube for the same video
+Related videos (different from *recommended videos*) do appear in the right column of a YouTube video page along with recommended videos. In the table below I compare the 20 video *related videos* returned by the API with the order of the 20 videos offered to me in the right column of the YouTube page for the same video:
 
 |API|Web|
 |:----:|:-----:|
@@ -65,9 +65,9 @@ Related videos (different from *recommended videos*) do appear in the right colu
 |2     |8     |
 |3     |1     |
 |4     |2      |
-|5     |      |
+|5     |   |
 |6     |      |
-|7     |12     |
+|7     |11     |
 |8     |9     |
 |9     |      |
 |10   |1      |
@@ -81,6 +81,8 @@ Related videos (different from *recommended videos*) do appear in the right colu
 |18   | 17    |
 |19   | 13    |
 |20   |     |
+
+The right column of the YouTube page contained 5 "recommended for you" videos at position 4, 6, 10, 12, and 16.
 
 ## API Response
 
