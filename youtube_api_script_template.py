@@ -4,8 +4,6 @@
 import json
 
 from apiclient.discovery import build
-from apiclient.errors import HttpError
-from oauth2client.tools import argparser
 
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
@@ -13,7 +11,6 @@ DEVELOPER_KEY = json.load(open('developer_key.json'))['DEVELOPER_KEY']
 
 youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
 
-# Get comments
 def get_comments(youtube, video_id):
   results = youtube.commentThreads().list(
     part="snippet",
@@ -29,4 +26,5 @@ def get_comments(youtube, video_id):
 
   return results["items"]
 
+# Get comments (not replies from JLqvnFRiP24)
 get_comments(youtube, 'JLqvnFRiP24')
