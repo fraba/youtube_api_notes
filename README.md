@@ -41,9 +41,66 @@ and if everything works you should get the comment posted below [this video](htt
 
 The function [build()](http://google.github.io/google-api-python-client/docs/epy/googleapiclient.discovery-module.html#build) create a resource to interact with the Google API. In this case we use it with the service `youtube`.
 
-## Get Comments
+## Get comments
+
+The function to request comments and replies is `commentThreads()`. 
 
 This line return comments and replies (note: `part="snippet,replies"`) for [this video](https://www.youtube.com/watch?v='ISBkB9j4a00')
 ```python
 results = youtube.commentThreads().list(part="snippet,replies", videoId='ISBkB9j4a00', textFormat="plainText").execute()
 ```
+## Get related videos
+
+The function to request related videos is the `search()` function with the parameters `relatedToVideoId` set to the video id and `type="video"`.
+
+```python
+results = youtube.search().list(part="snippet", relatedToVideoId='jaVSuYdEFks', type="video",maxResults=20).execute()
+```
+
+Related videos (different from *recommended videos*) do appear in the right column of a YouTube video page along with recommended videos. In the table below I compare the 20 video recommendations returned by the API with the 20 video recommendations offered to me on the YouTube for the same video
+
+|API|Web|
+|:----:|:-----:|
+|1     |5      |
+|2     |8     |
+|3     |1     |
+|4     |2      |
+|5     |      |
+|6     |      |
+|7     |12     |
+|8     |9     |
+|9     |      |
+|10   |1      |
+|11   |      |
+|12   |3      |
+|13   |      |
+|14   |      |
+|15   |     |
+|16   |      |
+|17   |      |
+|18   | 17    |
+|19   | 13    |
+|20   |     |
+
+## API Response
+
+A typical API response looks like this
+
+```
+{
+  "kind": string,
+  "etag": etag,
+  "nextPageToken": string,
+  "pageInfo": {
+    "totalResults": integer,
+    "resultsPerPage": integer
+  },
+  "items": [
+    .. Resource ..
+  ]
+}
+```
+
+## Pagination
+
+The parameter to set to request the following page is  `pageToken`  from the value `nextPageToken` of the list. See `youtube_api_script_paginating.py` for a working example. 
