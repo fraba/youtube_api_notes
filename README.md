@@ -37,3 +37,13 @@ and if everything works you should get the comment posted below [this video](htt
 
 > Comment by Ethan Chew: Brent, may you point to the database and website you show at 1:18?  That utility would be useful for my research with spaceports and the space industry and market.
 
+### Additional details on authentication
+
+The function [build()](http://google.github.io/google-api-python-client/docs/epy/googleapiclient.discovery-module.html#build) create a resource to interact with the Google API. In this case we use it with the service `youtube`.
+
+## Get Comments
+
+This line return comments and replies (note: `part="snippet,replies"`) for [this video](https://www.youtube.com/watch?v='ISBkB9j4a00')
+```python
+results = youtube.commentThreads().list(part="snippet,replies", videoId='ISBkB9j4a00', textFormat="plainText").execute()
+```
