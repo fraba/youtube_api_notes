@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2.7
 # Modified from https://github.com/spnichol/youtube_tutorial
 
 import json
