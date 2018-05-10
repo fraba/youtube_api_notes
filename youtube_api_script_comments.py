@@ -7,7 +7,7 @@ from apiclient.discovery import build
 
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
-DEVELOPER_KEY = json.load(open('developer_key.json'))['DEVELOPER_KEY']
+DEVELOPER_KEY = json.load(open('developer_key.json'))["DEVELOPER_KEY"]
 
 youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
 
